@@ -8,12 +8,15 @@ import (
 func main() {
 	fmt.Println("Hello, world")
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "hi")
-	})
+	// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	// 	fmt.Fprint(w, "hi")
+	// })
+
+	mux := http.NewServeMux()
+	mux.HandleFunc("GET /", landingHandler)
 
 	fs := http.FileServer(http.Dir("static/"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	mux.Handle("GET /static/", http.StripPrefix("/static/", fs))
 
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":80", mux)
 }
