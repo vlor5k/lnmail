@@ -1,14 +1,21 @@
 package main
 
 import (
+	"bakery/lnmail/data"
 	"bakery/lnmail/mailbox"
 	"fmt"
 	"net/http"
 )
 
-func main() {
-	fmt.Println("Hello, world")
+// import sqlite "gosqlite.org"
 
+// db, _ := sqlite.OpenWAL("app.db") // WAL + busy_timeout=5s + foreign_keys=on
+// defer db.Close()
+
+func main() {
+	data.SetupDB()
+
+	fmt.Println("Hello, world")
 	// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 	// 	fmt.Fprint(w, "hi")
 	// })
