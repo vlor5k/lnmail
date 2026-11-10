@@ -1,0 +1,3 @@
+module bakery/lnmail
+
+go 1.27.3
