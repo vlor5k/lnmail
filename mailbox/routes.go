@@ -23,13 +23,13 @@ type Stats struct {
 
 func RenderLanding(w http.ResponseWriter, r *http.Request) {
 	stats := Stats{45, 5, 50, 50000}
-	t, err := template.ParseFiles("templates/index.html")
+	template, err := template.ParseFiles("templates/index.html")
 
 	if err != nil {
-		fmt.Fprintf(w, "Failed to parse template")
+		fmt.Fprint(w, "Failed to parse template")
 		return
 	}
 
-	t.Execute(w, stats)
+	template.Execute(w, stats)
 	// fmt.Fprint(w, "Mailbox ", id)
 }
