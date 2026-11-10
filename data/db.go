@@ -12,11 +12,24 @@ func SetupDB() {
 	db, err := sqlite.OpenWAL("app.db")
 
 	if err != nil {
-		fmt.Println("Failed to open sqlite database...")
+		panic("Failed to open sqlite database...")
 	}
 
 	DB = db
 	fmt.Println("Database opened")
+
+	// rows, err := db.Query("SELECT COUNT(name) FROM sqlite_master WHERE type='table';")
+	rows, err := db.Query("SELECT 1;")
+	if err != nil {
+		panic("Couldn't query database")
+	}
+
+	var lol int
+	rows.Scan(&lol)
+
+	fmt.Println(lol)
 }
 
-// db embeds *sql.DB — every database/sql method works.
+func MigrateDB() {
+
+}
