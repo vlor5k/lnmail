@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bakery/lnmail/mailbox"
 	"fmt"
 	"net/http"
 )
@@ -13,7 +14,10 @@ func main() {
 	// })
 
 	mux := http.NewServeMux()
+
 	mux.HandleFunc("GET /", landingHandler)
+	mux.HandleFunc("GET /mailbox/{id}", mailbox.RenderMailbox)
+	mux.HandleFunc("GET /mailbox/", mailbox.RenderMailbox)
 
 	fs := http.FileServer(http.Dir("static/"))
 	mux.Handle("GET /static/", http.StripPrefix("/static/", fs))
