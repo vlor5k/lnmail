@@ -17,7 +17,7 @@ func main() {
 
 	mux.HandleFunc("GET /", landingHandler)
 	mux.HandleFunc("GET /mailbox/{id}", mailbox.RenderMailbox)
-	mux.HandleFunc("GET /mailbox/", mailbox.RenderMailbox)
+	mux.HandleFunc("GET /mailbox", mailbox.RenderLanding)
 
 	fs := http.FileServer(http.Dir("static/"))
 	mux.Handle("GET /static/", http.StripPrefix("/static/", fs))

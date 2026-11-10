@@ -2,6 +2,7 @@ package mailbox
 
 import (
 	"fmt"
+	"html/template"
 	"net/http"
 )
 
@@ -12,7 +13,23 @@ func RenderMailbox(w http.ResponseWriter, r *http.Request) {
 }
 
 // '/mailbox/'
+
+type Stats struct {
+	RandomCount int64
+	CustomCount int64
+	Count       int64
+	Sats        int64
+}
+
 func RenderLanding(w http.ResponseWriter, r *http.Request) {
-	id := r.PathValue("id")
-	fmt.Fprint(w, "Mailbox ", id)
+	stats := Stats{45, 5, 50, 50000}
+	t, err := template.ParseFiles("templates/index.html")
+
+	if err != nil {
+		fmt.Fprintf(w, "Failed to parse template")
+		return
+	}
+
+	t.Execute(w, stats)
+	// fmt.Fprint(w, "Mailbox ", id)
 }

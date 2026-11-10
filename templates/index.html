@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css"/>
+    </head>
+    <body>
+        <h1>
+            lnmail
+        </h1>
+        
+        <form method="post">
+            <label for="accountid">
+                Account Identifier
+            </label>
+            <br/>
+            <input style="font-family: monospace;" id="accountid" name="login" type="password" placeholder="123a-4b5c-678d-9e0f" required></input>
+
+            <input type="submit" value="Login"></input>
+        </form>
+        Purchase a mailbox to get an account identifier.
+        <!-- <a href="/mailbox/">Webmail</a> -->
+
+        <hr/>
+        <h2>Service</h2>
+        Receive-only mailboxes purchased through the Bitcoin Lightning network
+        <br/>
+        Simple HTTP API (soon)
+        <br/>
+        Login with a unique identifier (No KYC, phone number, or existing email address)
+        <br/>
+        No JavaScript required
+        <br/>
+        <br/>
+        Mailboxes last for the service/domain lifetime
+
+        <hr/>
+        <h2>Prices</h2>
+        <a href="/mailbox/purchase/random">Random email addresses 1500 sats each</a>
+        <br/>
+        <a href="/mailbox/purchase/custom">Custom email addresses from 15000 sats (prices may vary)</a>
+        
+        <hr/>
+        <h2>Stats</h2>
+        {{.Count}} mailboxes created ({{.RandomCount}} random, {{.CustomCount}} custom)
+        <br/>
+        {{.Sats}} sats received
+    </body>
+</html>
