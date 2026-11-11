@@ -2,47 +2,91 @@
     <head>
         <link rel="stylesheet" href="/static/style.css"/>
         <title>Lnmail</title>
+
+        <meta name="theme-color" content="#80aabb">
+        <meta property="og:title" content="Lnmail">
+        <meta property="og:description" content="Semi-temporary mailboxes">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://draco.fm/">
+        <meta property="og:image" content="https://draco.fm/2sl0w.png">
+        <style>
+            body {
+                display: flex;
+            }
+        </style>
     </head>
     <body>
-        <h1>
-            Lnmail
-        </h1>
-        
-        <form method="post">
-            <label for="accountid">
-                Account Identifier
-            </label>
+        <div style="flex: 1;"></div>
+        <div>
+            <h1>
+                Lnmail
+            </h1>
+            
+            <form method="post">
+                <label for="accountid">
+                    Account Identifier
+                </label>
+                <br/>
+                <input style="font-family: monospace;" id="accountid" name="login" type="password" placeholder="123a-4b5c-678d-9e0f" required></input>
+
+                <input type="submit" value="Login"></input>
+            </form>
+            Purchase a mailbox to get an account identifier.
+            <!-- <a href="/mailbox/">Webmail</a> -->
+
+            <hr/>
+            <h2>Service</h2>
+            Receive-only mailboxes purchased through the Bitcoin Lightning network
             <br/>
-            <input style="font-family: monospace;" id="accountid" name="login" type="password" placeholder="123a-4b5c-678d-9e0f" required></input>
+            Simple HTTP API (soon)
+            <br/>
+            Login with a unique identifier (No KYC, phone number, or existing email address)
+            <br/>
+            No JavaScript required
+            <br/>
+            <br/>
+            Mailboxes last for the service/domain lifetime
 
-            <input type="submit" value="Login"></input>
-        </form>
-        Purchase a mailbox to get an account identifier.
-        <!-- <a href="/mailbox/">Webmail</a> -->
+            <hr/>
+            <h2>Prices</h2>
+            <a href="/mailbox/purchase/random">Random email addresses 100,000 sats each</a>
+            <br/>
+            <a href="/mailbox/purchase/custom">Custom email addresses from 500,000 sats (prices may vary)</a>
+            
+            <hr/>
+            <h2>Stats</h2>
+            {{.Count}} mailboxes created ({{.RandomCount}} random, {{.CustomCount}} custom)
+            <br/>
+            {{.Sats}} sats received
 
-        <hr/>
-        <h2>Service</h2>
-        Receive-only mailboxes purchased through the Bitcoin Lightning network
-        <br/>
-        Simple HTTP API (soon)
-        <br/>
-        Login with a unique identifier (No KYC, phone number, or existing email address)
-        <br/>
-        No JavaScript required
-        <br/>
-        <br/>
-        Mailboxes last for the service/domain lifetime
+            
+            <hr/>
+            <h2>Data Collection</h2>
+            The only user data we store is the account ID, the mailboxes it owns, and when it was created.
+            <br/>
+            (and the emails sent to active mailboxes)
 
-        <hr/>
-        <h2>Prices</h2>
-        <a href="/mailbox/purchase/random">Random email addresses 1500 sats each</a>
-        <br/>
-        <a href="/mailbox/purchase/custom">Custom email addresses from 15000 sats (prices may vary)</a>
-        
-        <hr/>
-        <h2>Stats</h2>
-        {{.Count}} mailboxes created ({{.RandomCount}} random, {{.CustomCount}} custom)
-        <br/>
-        {{.Sats}} sats received
+            <hr/>
+            <h2>Onionsite</h2>
+            <a class="connect">bitcoin2uilzladncellwnack3cfycnvja2acbpr2qthxjgiq3zhqgid.onion</a>
+
+            <hr/>
+            <h2>Lightning</h2>
+            Payments processed with Bitcoin Lightning
+            <br/>
+            Open a channel to us if you'd like:
+            <br/>
+            <a class="connect">034cb08e8534a7c06ffeca47eb347e5883c037344324c102d9f0f701c3f64a4123@bitcoin2uilzladncellwnack3cfycnvja2acbpr2qthxjgiq3zhqgid.onion</a>
+            
+            <hr/>
+            <h2>On-chain</h2>
+            On-chain payments are not currently supported.
+
+            <hr/>
+            <h2>Self hosting</h2>
+            <a href="https://github.com/vlor5k/lnmail">Github</a>
+            
+        </div>
+        <div style="flex: 1;"></div>
     </body>
 </html>

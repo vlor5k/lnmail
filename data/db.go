@@ -18,18 +18,21 @@ func SetupDB() {
 	DB = db
 	fmt.Println("Database opened")
 
-	// rows, err := db.Query("SELECT COUNT(name) FROM sqlite_master WHERE type='table';")
-	rows, err := db.Query("SELECT 1;")
+	// rows, err := db.Query("")
+	var lol int
+	err = db.QueryRow("SELECT COUNT(*) FROM sqlite_master WHERE type='table';").Scan(&lol)
 	if err != nil {
 		panic("Couldn't query database")
 	}
 
-	var lol int
-	rows.Scan(&lol)
+	// database already in place so nothing more to do
+	if lol != 0 {
+		return
+	}
 
-	fmt.Println(lol)
+	MigrateDB()
 }
 
 func MigrateDB() {
-
+	fmt.Println("Migrating...")
 }
