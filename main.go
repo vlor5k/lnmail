@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bakery/lnmail/config"
 	"bakery/lnmail/data"
 	"bakery/lnmail/mailbox"
 	"fmt"
@@ -13,6 +14,7 @@ import (
 // defer db.Close()
 
 func main() {
+	config.LoadConfig()
 	data.SetupDB()
 
 	fmt.Println("Hello, world")

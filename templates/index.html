@@ -49,15 +49,22 @@
 
             <hr/>
             <h2>Prices</h2>
-            <a href="/mailbox/purchase/random">Random email addresses 100,000 sats each</a>
-            <br/>
-            <a href="/mailbox/purchase/custom">Custom email addresses from 500,000 sats (prices may vary)</a>
+            {{ if .Config.RandomEmailsEnabled }}
+                <a href="/mailbox/purchase/random">Random email addresses {{ .Config.RandomEmailsPriceSats }} sats each</a>
+                <br/>
+            {{ end }}
+
+            {{ if .Config.CustomEmailsEnabled }}
+                <a href="/mailbox/purchase/custom">Custom email addresses from {{ .Config.CustomEmailsPriceSats }} sats (prices may vary)</a>
+            {{ end }}
             
-            <hr/>
-            <h2>Stats</h2>
-            {{.Count}} mailboxes created ({{.RandomCount}} random, {{.CustomCount}} custom)
-            <br/>
-            {{.Sats}} sats received
+            {{ if .Config.ShowStatsOnLandingPage }}
+                <hr/>
+                <h2>Stats</h2>
+                {{.Stats.Count}} mailboxes created ({{.Stats.RandomCount}} random, {{.Stats.CustomCount}} custom)
+                <br/>
+                {{.Stats.Sats}} sats received
+            {{ end }}
 
             
             <hr/>
@@ -67,16 +74,21 @@
             (and the emails sent to active mailboxes)
 
             <hr/>
-            <h2>Onionsite</h2>
-            <a class="connect">bitcoin2uilzladncellwnack3cfycnvja2acbpr2qthxjgiq3zhqgid.onion</a>
 
-            <hr/>
+            {{ if .Config.OnionsiteUrl }}
+                <h2>Onionsite</h2>
+                <a class="connect">{{ .Config.OnionsiteUrl }}</a>
+                <hr/>
+            {{ end }}
+
             <h2>Lightning</h2>
             Payments processed with Bitcoin Lightning
             <br/>
-            Open a channel to us if you'd like:
-            <br/>
-            <a class="connect">034cb08e8534a7c06ffeca47eb347e5883c037344324c102d9f0f701c3f64a4123@bitcoin2uilzladncellwnack3cfycnvja2acbpr2qthxjgiq3zhqgid.onion</a>
+            {{ if .Config.LightningConnectionUri }}
+                Open a channel to us if you'd like:
+                <br/>
+                <a class="connect">{{ .Config.LightningConnectionUri }}</a>
+            {{ end }}
             
             <hr/>
             <h2>On-chain</h2>

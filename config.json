@@ -1,0 +1,10 @@
+{
+    "RandomEmailsEnabled": true,
+    "RandomEmailsPriceSats": 100000,
+
+    "CustomEmailsEnabled": true,
+    "CustomEmailsPriceSats": 500000,
+    "OnionsiteUrl": "example.onion",
+
+    "LightningConnectionUri": "publickey@iporonion"
+}
